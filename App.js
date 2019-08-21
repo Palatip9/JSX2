@@ -6,26 +6,26 @@ let names=[];
 let math = [];
 let phy = [];
 let com = [];
-let sss = 0;
+
 export default class App extends React.Component {
-  onNameChange(index,text)
+
+  onNameChange(index, text)
   {
-    names[index]=text;
+    names[index] = text;
   }
-  
-  onMathChange(index,text)
+  onMathChange(index, text)
   {
-    math[index]=text;
+     math[ index] = text;
   }
 
-  onComChange(index,text)
-  {
-    com[index]=text;
-  }
-
-  onPhyChange(index,text)
+  onPhyChange(index, text)
   {
     phy[index]=text;
+  }
+
+  onComChange(index, text)
+  {
+    com[index]=text;
   }
 
   onCalculate()
@@ -34,30 +34,28 @@ export default class App extends React.Component {
     let sum;
     let max=-1;
     let index=-1;
-    for (i=0;names.length;i++)
+    for(i=0;i<names.length;i++)
     {
-      sum=math[i]+phy[i]+com[i];
-      if (sum>max)
+      sum = math[i]+phy[i]+com[i];
+      if(sum>max)
       {
-        max=sum;
-        index=i;
+        max = sum;
+        index = i;
       }
     }
     Alert.alert(names[index])
-    
   }
 
-  render() {
+  render(){
     return (
-
       <LinearGradient
        colors={['#7F7FD5', '#86A8E7', '#91EAE4']}
        style={{flex: 1}}>
 
        <View style={{flex: 1}}>
-          <ScrollView style={{flex: 1}}>
+        <ScrollView style={{flex: 1}}>
+
           <Text style={styles.txtShow}> Student1 </Text>
-          
           <TextInput
             style={styles.inputText}
             placeholder="Name"
@@ -76,6 +74,13 @@ export default class App extends React.Component {
             style={styles.inputText}
             placeholder="Computer"
             onChangeText={(text) => {this.onComChange(0,Number(text))}}/>
+  
+          <TouchableOpacity
+            style={styles.touchableUser}
+            onPress={() => this.onCalculate()}>
+            <Text style={styles.txtButton}>Calculate</Text>
+          </TouchableOpacity>
+
 
           <Text style={styles.txtShow}> Student2 </Text>
           <TextInput
@@ -96,7 +101,14 @@ export default class App extends React.Component {
             style={styles.inputText}
             placeholder="Computer"
             onChangeText={(text) => {this.onComChange(1,Number(text))}}/>
-          
+  
+          <TouchableOpacity
+            style={styles.touchableUser}
+            onPress={() => this.onCalculate()}>
+            <Text style={styles.txtButton}>Calculate</Text>
+          </TouchableOpacity>
+
+
           <Text style={styles.txtShow}> Student3 </Text>
           <TextInput
             style={styles.inputText}
@@ -116,16 +128,15 @@ export default class App extends React.Component {
             style={styles.inputText}
             placeholder="Computer"
             onChangeText={(text) => {this.onComChange(2,Number(text))}}/>
-          
+  
           <TouchableOpacity
             style={styles.touchableUser}
             onPress={() => this.onCalculate()}>
             <Text style={styles.txtButton}>Calculate</Text>
           </TouchableOpacity>
-        </ScrollView>
-       </View>
+          </ScrollView>
 
-       
+       </View>
       </LinearGradient>
     );
   }
